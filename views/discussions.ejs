@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">All Discussions</h1>
+    <p class="lead">Our best comes out when we have honest discussions!</p>
+    <hr />
+    <a href="/" class="btn btn-dark" role="button">Back to Home</a>
+    <% discussions.forEach(function (item) { %>
+
+    <div class="card text-white bg-secondary mb-3" style="max-width: 50rem">
+      <div class="card-body">
+        <h5 class="card-title link-color">
+          <a href=<%="/discussions/" + item.id %>
+            role="button"><%= item.topic %></a
+          >
+        </h5>
+        <p class="card-text"><%= item.description %></p>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

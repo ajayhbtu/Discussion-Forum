@@ -1,0 +1,12 @@
+body {
+  background-color: #e8ecef;
+}
+
+.centered {
+  padding-top: 200px;
+  text-align: center;
+}
+
+.link-color {
+  color: black;
+}

@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron">
+  <div class="container">
+    <a href="/discussions" class="btn btn-dark" role="button"
+      >Back to all Discussions</a
+    >
+    <div class="card text-white bg-secondary mb-3" style="max-width: 50rem">
+      <div class="card-header"><%= result.author.username %></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= result.topic %></h5>
+        <p class="card-text"><%= result.description %></p>
+      </div>
+    </div>
+
+    <div class="card text-dark bg-light mb-3" style="max-width: 50rem">
+      <div class="card-header">Replies</div>
+      <% result.replies.forEach(function (item) { %>
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
+        <p class="card-text"><%= item.reply %></p>
+      </div>
+      <hr />
+      <% }); %>
+    </div>
+
+    <% if (isauthenticated) { %>
+    <div class="card text-dark bg-light mb-3" style="max-width: 50rem">
+      <div class="card-header">Add a Reply</div>
+      <div class="card-body">
+        <form action=<%= "/discussions/" + result.id %>
+          method="post">
+          <textarea class="card-text" name="reply"></textarea>
+          <br />
+          <button type="submit" class="btn btn-dark">Reply</button>
+        </form>
+      </div>
+    </div>
+    <% } else { %>
+    <a href="/login" class="btn btn-dark" role="button">Login to Reply</a>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
